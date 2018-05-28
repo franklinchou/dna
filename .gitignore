@@ -1,0 +1,14 @@
+.idea/
+scratch/
+target/
+
+
+# Python files
+__pycache__/
+*.py[cod]
+
+
+# VIM swap files
+*.swp
+*.swo
+*~
