@@ -34,3 +34,22 @@ def remove(head: Node) -> Node:
         n = n.next
 
     return new_head
+
+# bufferless remove using pointers only
+def bufferless_remove(head: Node) -> Node:
+    # preserve head so that it can be retrieved later on
+    new_head = head
+    addition = new_head
+
+    n = head
+    while (n != None):
+        runner = n
+        while (runner.next != None):
+            if (n.record == runner.next.record):
+                runner.set_next(runner.next.next)
+            else:
+                runner = runner.next
+        n = n.next
+        addition.set_next(n)
+        addition = n # advance addition
+    return new_head
