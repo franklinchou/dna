@@ -1,8 +1,8 @@
 import unittest
 
-from ds.node import Node
-from exercises.linked_lists import two_two as tester
+from exercises.linked_lists import two_2 as tester
 from test.utils import node as nu
+
 
 class TestTwoTwo(unittest.TestCase):
 

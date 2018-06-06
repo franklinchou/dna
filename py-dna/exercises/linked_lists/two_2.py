@@ -4,17 +4,18 @@ from ds.node import Node
 def size(head: Node) -> int:
     n = head
     count = 1
-    while (n != None):
-        if(n.next != None):
+    while (n is not None):
+        if (n.next is not None):
             count = count + 1
         n = n.next
     return count
+
 
 # trivial case of finding from head
 def find_from_head(head: Node, index: int) -> str:
     n = head
     count = 0
-    while (n != None):
+    while (n is not None):
         if (count == index):
             return n.record
         count = count + 1
@@ -30,9 +31,8 @@ def find_from_last(head: Node, index: int) -> str:
     p = head
     count = 0
     sought = last - (index + 1)
-    while (p != None):
+    while (p is not None):
         if (count == sought):
             return p.record
         count = count + 1
         p = p.next
-
