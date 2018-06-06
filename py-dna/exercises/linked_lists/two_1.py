@@ -13,7 +13,7 @@ class Encountered(object):
     def add(self, s: str):
         self.data.append(s)
 
-def remove(head: Node) -> Node:
+def remove_duplicates(head: Node) -> Node:
     new_head = head
     addition = new_head
     e = Encountered()
@@ -24,7 +24,7 @@ def remove(head: Node) -> Node:
     n = n.next
 
     # traverse the list
-    while (n != None):
+    while (n is not None):
         if (e.contains(n.record)):
             pass
         else:
@@ -35,16 +35,16 @@ def remove(head: Node) -> Node:
 
     return new_head
 
-# bufferless remove using pointers only
-def bufferless_remove(head: Node) -> Node:
+# bufferless remove using only pointers
+def remove_duplicates_bufferless(head: Node) -> Node:
     # preserve head so that it can be retrieved later on
     new_head = head
     addition = new_head
 
     n = head
-    while (n != None):
+    while (n is not None):
         runner = n
-        while (runner.next != None):
+        while (runner.next is not None):
             if (n.record == runner.next.record):
                 runner.set_next(runner.next.next)
             else:
