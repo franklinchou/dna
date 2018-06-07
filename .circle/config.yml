@@ -19,4 +19,9 @@ jobs:
             cd scala-dna
             sbt clean compile
             sbt test
-
+workflows:
+  version: 2
+  test_all:
+    jobs:
+      - py-dna-test
+      - scala-dna-test
