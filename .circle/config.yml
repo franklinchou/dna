@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  py-dna-test:
+    docker:
+      - image: circle/python:3.6.1
+    steps:
+      - checkout
+      - run:
+          name: run-python-tests
+          command: cd py-dna && python3 -m unittest discover 
+  scala-dna-test:
+    docker:
+      - image: hseeberger/scala-sbt:8u141-jdk_2.12.3_0.13.16
+    steps:
+      - checkout
+      - run:
+          name: run-scala-tests
+          command: |
+            cd scala-dna
+            sbt clean compile
+            sbt test
+
