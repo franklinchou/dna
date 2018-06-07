@@ -2,7 +2,7 @@ version: 2
 jobs:
   py-dna-test:
     docker:
-      - image: circle/python:3.6.1
+      - image: circleci/python:3.6.1
     steps:
       - checkout
       - run:
