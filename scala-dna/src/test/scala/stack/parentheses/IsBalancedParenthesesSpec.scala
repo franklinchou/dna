@@ -2,7 +2,7 @@ package stack.parentheses
 
 import org.scalatest.FunSpec
 
-class ParenthesesSpec extends FunSpec {
+class IsBalancedParenthesesSpec extends FunSpec {
 
   describe("Testing Parentheses") {
     it ("should pass") {

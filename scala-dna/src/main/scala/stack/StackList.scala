@@ -2,7 +2,7 @@ package stack
 
 import node.Node
 
-class ListStack[T] extends Stack[T] with Peek[T] {
+class StackList[T] extends Stack[T] with Peek[T] {
 
   private var top: Node[T] = _
 

@@ -16,8 +16,8 @@ object Dijkstra {
 
     var in = utils.File.read(input).toStream
 
-    val operators = new ArrayStack[String]
-    val values = new ArrayStack[Double]
+    val operators = new StackArray[String]
+    val values = new StackArray[Double]
 
 
     while (in.nonEmpty) {

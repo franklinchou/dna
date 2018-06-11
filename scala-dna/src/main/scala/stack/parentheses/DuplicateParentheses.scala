@@ -1,6 +1,6 @@
 package stack.parentheses
 
-import stack.ListStack
+import stack.StackList
 
 object DuplicateParentheses {
 
@@ -21,7 +21,7 @@ object DuplicateParentheses {
 
     var chars: List[Char] = input.toList
 
-    val openingStack = new ListStack[Char]
+    val openingStack = new StackList[Char]
 
     var subexpression = StringBuilder.newBuilder
 
