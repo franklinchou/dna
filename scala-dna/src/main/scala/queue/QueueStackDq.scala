@@ -14,13 +14,10 @@ class QueueStackDq[T] extends Queue[T] {
 
   val out = new StackList[T]
 
-  private var total: Int = 0
-
   /**
     * Add an element to the queue's tail
     */
   def enqueue(item: T): Unit = {
-    total = total + 1
     in.push(item)
   }
 
@@ -54,10 +51,9 @@ class QueueStackDq[T] extends Queue[T] {
       }
 
       assert(out.isEmpty)
-      total -= 1
       result
     }
   }
 
-  def size: Int = total
+  def size: Int = in.size
 }
