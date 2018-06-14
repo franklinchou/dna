@@ -8,7 +8,7 @@ import stack.StackList
   *
   * @tparam T
   */
-class QueueStackDq[T] extends Queue[T] {
+class QueueStackEnqFast[T] extends Queue[T] {
 
   val in = new StackList[T]
 
@@ -42,16 +42,7 @@ class QueueStackDq[T] extends Queue[T] {
       while (!in.isEmpty) {
         out.push(in.pop())
       }
-
-      val result = Some(out.pop())
-
-      // Copy the "un-popped" items back onto the input stack
-      while (!out.isEmpty) {
-        in.push(out.pop())
-      }
-
-      assert(out.isEmpty)
-      result
+      Some(out.pop())
     }
   }
 
