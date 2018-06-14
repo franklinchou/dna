@@ -1,6 +1,6 @@
 package stack
 
-class ArrayStack[T] extends Stack[T] {
+class StackArray[T] extends Stack[T] {
 
   protected var data: List[T] = List.empty[T]
 

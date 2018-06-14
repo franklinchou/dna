@@ -2,13 +2,13 @@ package stack
 
 import org.scalatest.FunSpec
 
-class ListArrayStackSpec extends FunSpec {
+class StackListSpec extends FunSpec {
 
   describe("Stack using linked list") {
 
-    val t = new ListStack[Char]
+    val t = new StackList[Char]
     it ("can be instantiated") {
-      assert(t.isInstanceOf[ListStack[Char]])
+      assert(t.isInstanceOf[StackList[Char]])
     }
 
     it("supports push") {

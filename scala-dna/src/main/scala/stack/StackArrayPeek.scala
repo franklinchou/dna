@@ -1,6 +1,6 @@
 package stack
 
-class StackPeek[T] extends ArrayStack[T] with Peek[T] {
+class StackArrayPeek[T] extends StackArray[T] with Peek[T] {
 
   def peek():T = {
     data.headOption match {

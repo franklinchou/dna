@@ -1,6 +1,6 @@
 package stack.parentheses
 
-import stack.ListStack
+import stack.StackList
 
 
 // input: 1 + 2 ) * 3 - 4 ) * 5 - 6 ) ) )
@@ -13,8 +13,8 @@ object BalanceParentheses {
 
     var chars: List[Char] = input.toList
 
-    val operators = new ListStack[String]
-    val operands = new ListStack[String] // numbers
+    val operators = new StackList[String]
+    val operands = new StackList[String] // numbers
 
     while (chars.nonEmpty) {
       val c = chars.head

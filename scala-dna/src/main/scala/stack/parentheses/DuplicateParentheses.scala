@@ -1,7 +1,13 @@
 package stack.parentheses
 
-import stack.ListStack
+import stack.StackList
 
+
+/**
+  * Find duplicate parentheses in a sub expression
+  *
+  * http://www.techiedelight.com/find-duplicate-parenthesis-expression/
+  */
 object DuplicateParentheses {
 
   def stringify(m: Map[Boolean, String]): String = {
@@ -21,7 +27,7 @@ object DuplicateParentheses {
 
     var chars: List[Char] = input.toList
 
-    val openingStack = new ListStack[Char]
+    val openingStack = new StackList[Char]
 
     var subexpression = StringBuilder.newBuilder
 

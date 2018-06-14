@@ -2,12 +2,12 @@ package stack
 
 import org.scalatest.FunSpec
 
-class ArrayStackSpec extends FunSpec {
+class StackArraySpec extends FunSpec {
 
-  describe("A stack") {
-    val test = new ArrayStack[Int]
+  describe("A stack implemented with an array") {
+    val test = new StackArray[Int]
     it("can be instantiated") {
-      assert(test.isInstanceOf[ArrayStack[Int]])
+      assert(test.isInstanceOf[StackArray[Int]])
     }
 
     it("supports push") {

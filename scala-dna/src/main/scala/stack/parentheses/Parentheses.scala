@@ -1,11 +1,11 @@
 package stack.parentheses
 
-import stack.ArrayStack
+import stack.StackArray
 
 // p. 161, exercise 1.3.3
 object Parentheses {
 
-  val openingStack = new ArrayStack[Char]
+  val openingStack = new StackArray[Char]
 
   def apply(input: String): Boolean = {
 
