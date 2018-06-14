@@ -14,7 +14,7 @@ trait Queue[T] {
   def enqueue(item: T): Unit
 
   /**
-    * View the head of the queue without removing it, returns `null` if the queue is empty.
+    * View the head of the queue without removing it, returns `None` if the queue is empty.
     */
   def peek(): Option[T]
 

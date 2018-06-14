@@ -2,6 +2,12 @@ package stack.parentheses
 
 import stack.StackList
 
+
+/**
+  * Find duplicate parentheses in a sub expression
+  *
+  * http://www.techiedelight.com/find-duplicate-parenthesis-expression/
+  */
 object DuplicateParentheses {
 
   def stringify(m: Map[Boolean, String]): String = {
