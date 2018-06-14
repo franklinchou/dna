@@ -4,9 +4,9 @@ import node.Node
 
 class QueueList[T] extends Queue[T] {
 
-  private var tail: Node[T] = _
+  private var tail: Option[Node[T]] = _
 
-  private var head: Node[T] = _
+  private var head: Option[Node[T]] = _
 
   private var total: Int = 0
 
@@ -15,14 +15,17 @@ class QueueList[T] extends Queue[T] {
     * Add an element to the queue's tail
     */
   def enqueue(item: T): Unit = {
-    val n = Node(item, null) // Create new node
+    val n = Node(item, None) // Create new node
     if (total == 0) {
-      head = n
-      tail = n
+      head =  Some(n)
+      tail =  Some(n)
     }
+
+    assert(tail.isDefined) // Tail should never be None after enqueue
+
     total += 1
-    tail.next = n
-    tail = n
+    tail.get.next = Some(n)
+    tail = Some(n)
   }
 
   /**
@@ -32,8 +35,8 @@ class QueueList[T] extends Queue[T] {
     if (total == 0) {
       None
     } else {
-      val v = head.data // Store the data before moving the pointer
-      head = head.next
+      val v = head.get.data // Store the data before moving the pointer
+      head = head.get.next
       total = total - 1
       Some(v)
     }
@@ -45,7 +48,7 @@ class QueueList[T] extends Queue[T] {
     */
   def peek(): Option[T] = {
     if (size > 0) {
-      Some(head.data)
+      Some(head.get.data)
     } else {
       None
     }

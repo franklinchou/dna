@@ -4,7 +4,7 @@ import node.Node
 
 class StackList[T] extends Stack[T] with Peek[T] {
 
-  private var top: Node[T] = _
+  private var top: Option[Node[T]] = _
 
   private var total: Int = 0
 
@@ -12,15 +12,15 @@ class StackList[T] extends Stack[T] with Peek[T] {
     val o = top
     val n = Node(item, o)
     total = total + 1
-    top = n
+    top = Some(n)
   }
 
   def pop(): T = {
     if (size > 0) {
       val t = top
-      top = t.next
+      top = t.get.next
       total = total - 1
-      t.data
+      t.get.data
     } else {
       throw new UnsupportedOperationException
     }
@@ -30,5 +30,5 @@ class StackList[T] extends Stack[T] with Peek[T] {
 
   override def isEmpty: Boolean = top == null
 
-  def peek(): T = top.data
+  def peek(): T = top.get.data
 }
