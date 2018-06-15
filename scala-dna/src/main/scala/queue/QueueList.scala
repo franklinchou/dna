@@ -4,12 +4,11 @@ import node.Node
 
 class QueueList[T] extends Queue[T] {
 
-  private var tail: Option[Node[T]] = _
+  private var tail: Option[Node[T]] = None
 
-  private var head: Option[Node[T]] = _
+  private var head: Option[Node[T]] = None
 
   private var total: Int = 0
-
 
   /**
     * Add an element to the queue's tail
@@ -19,13 +18,12 @@ class QueueList[T] extends Queue[T] {
     if (total == 0) {
       head =  Some(n)
       tail =  Some(n)
+    } else {
+      tail.get.next = Some(n)
+      tail = Some(n)
     }
-
-    assert(tail.isDefined) // Tail should never be None after enqueue
-
+    assert(tail.isDefined && head.isDefined) // Head & Tail should never be None after enqueue
     total += 1
-    tail.get.next = Some(n)
-    tail = Some(n)
   }
 
   /**
