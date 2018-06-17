@@ -3,6 +3,14 @@ package string;
 import java.util.LinkedList;
 import java.util.Queue;
 
+
+/**
+ * A palindrome is a string that reads the same forward and backward; for instance “abcdedcba” is a
+ * palindrome. A rotated palindrome is a string that reads the same forward and backward, either
+ * directly or in any rotation of the string; for instance, “dedcbaabc” is a rotated palindrome,
+ * because if the last three letters at the end of the string are rotated to the beginning of the
+ * string, it becomes “abcdedcba” which is a palindrome.
+ */
 public class RotatedPalindrome {
 
     private static String buildStr(Character[] cs) {

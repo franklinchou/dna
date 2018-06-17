@@ -2,16 +2,21 @@
 
 from ds.node import Node
 
+
 class Encountered(object):
+
     def __init__(self):
         self.data = []
+
     def contains(self, s: str) -> bool:
         for _ in self.data:
             if (s == _):
                 return True
         return
+
     def add(self, s: str):
         self.data.append(s)
+
 
 def remove_duplicates(head: Node) -> Node:
     new_head = head
@@ -34,6 +39,7 @@ def remove_duplicates(head: Node) -> Node:
         n = n.next
 
     return new_head
+
 
 # bufferless remove using only pointers
 def remove_duplicates_bufferless(head: Node) -> Node:

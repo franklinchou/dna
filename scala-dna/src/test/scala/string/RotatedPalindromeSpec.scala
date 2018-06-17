@@ -10,6 +10,7 @@ class RotatedPalindromeSpec extends FunSpec {
     }
     it("should discover a rotated palindrome") {
       assert(RotatedPalindrome.isRotated("abcdedcba"))
+      assert(RotatedPalindrome.isRotated("dedcbaabc"))
     }
   }
 
