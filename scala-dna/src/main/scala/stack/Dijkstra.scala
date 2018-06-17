@@ -1,5 +1,7 @@
 package stack
 
+import utils.File
+
 import scala.util.Try
 
 
@@ -14,7 +16,7 @@ object Dijkstra {
 
   def apply(input: String): Double = {
 
-    var in = utils.File.read(input).toStream
+    var in = File.read(input).toStream
 
     val operators = new StackArray[String]
     val values = new StackArray[Double]

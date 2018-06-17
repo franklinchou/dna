@@ -7,5 +7,4 @@ object File {
   def read(fname: String) = {
     Source.fromResource(fname).getLines()
   }
-
 }
