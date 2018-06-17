@@ -10,60 +10,44 @@ import stack.StackList
   */
 object DuplicateParentheses {
 
-  def stringify(m: Map[Boolean, String]): String = {
-    if (m.keys.forall(_ == false)) {
-      "No duplicate parentheses found"
-    } else {
-      val expression = StringBuilder.newBuilder
-      m.filterKeys(_ == true).map { v =>
-        val expr = v._2
-        expression.append(s"Duplicate parentheses found in sub-expression $expr")
-      }
-      expression.mkString
-    }
-  }
-
   def apply(input: String): String = {
-
     var chars: List[Char] = input.toList
 
-    val openingStack = new StackList[Char]
+    val operands = new StackList[String]
+    val operators = new StackList[Char]
+    val openings = new StackList[Char]
 
-    var subexpression = StringBuilder.newBuilder
+    var duplicates = false
 
-    var duplicate: Boolean = false
-
-    var consensus: Map[Boolean, String] = Map.empty
-
-    while (chars.nonEmpty) {
-
+    while (chars.nonEmpty && !duplicates) {
       val c = chars.head
-
-      if (opening contains c) {
-        openingStack.push(c)
-      } else if (closing contains c) {
-        openingStack.pop()
-        if (openingStack.size > 0) {
-          duplicate = true
-        } else if (openingStack.isEmpty && duplicate) {
-          subexpression.append(c)
-          consensus = consensus ++ Map(true -> subexpression.mkString)
-          subexpression = StringBuilder.newBuilder
-          duplicate = false
+      if (c == '(') {
+        openings.push('(')
+      } else if (Set('+', '-', '*', '/').contains(c)) {
+        operators.push(c)
+      } else if (c == ')') {
+        // If there are no more operators but still opening braces, there are duplicates.
+        if (operators.isEmpty && !openings.isEmpty) {
+          duplicates = true
+        } else {
+          val b = operands.pop()
+          val a = operands.pop()
+          openings.pop()
+          val expr = s"($a${operators.pop()}$b)"
+          operands.push(expr)
         }
       } else {
-        // If it's not a closing or opening brace, do nothing.
+        operands.push(c.toString)
       }
-
-      if (openingStack.size > 0) {
-        subexpression.append(c)
-      }
-
-
       chars = chars.drop(1)
     }
 
-    stringify(consensus)
-  }
 
+    if (duplicates) {
+      "Found duplicate parentheses"
+    } else {
+      "No duplicate parentheses"
+    }
+
+  }
 }

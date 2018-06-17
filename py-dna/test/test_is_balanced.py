@@ -1,8 +1,8 @@
 import unittest
 
-from ds.node import Node
 from exercises.stacks import is_balanced as tester
 from test.utils import node as nu
+
 
 class TestIsBalanced(unittest.TestCase):
 

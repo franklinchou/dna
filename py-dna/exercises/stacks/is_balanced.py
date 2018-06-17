@@ -4,6 +4,7 @@
 from ds.node import Node
 from ds.stack import Stack
 
+
 def is_balanced(head: Node) -> bool:
     n = head
     s = Stack()
@@ -17,7 +18,6 @@ def is_balanced(head: Node) -> bool:
             else:
                 s.pop()
         n = n.next
-        
 
     if balanced and s.isEmpty():
         return True
