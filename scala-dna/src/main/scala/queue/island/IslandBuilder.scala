@@ -1,7 +1,5 @@
 package queue.island
 
-import java.nio.file.{Files, Paths}
-
 import queue.island.Island.World
 
 import scala.io.Source
