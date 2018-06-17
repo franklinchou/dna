@@ -1,7 +1,7 @@
 import unittest
 
-from ds.stack import Stack
 from exercises.stacks import dec_to_bin as tester
+
 
 class TestDecToBin(unittest.TestCase):
     
