@@ -47,7 +47,7 @@ object Two4 extends App {
   }
 
   val test = Some(Node(5, Some(Node(6, Some(Node(4, Some(Node(2, Some(Node(3, Some(Node(1, None))))))))))))
-  
+
   val r1 = partitionAbout(test, 7)
   val r2 = partitionAbout(test, 3)
 
