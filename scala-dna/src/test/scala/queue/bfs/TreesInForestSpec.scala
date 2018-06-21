@@ -16,6 +16,16 @@ class TreesInForestSpec extends FunSpec {
       )
       assert(TreesInForest.countTrees(forest, 10) == 3)
     }
+    it("should also find 3 trees") {
+      val forest: Array[Node] = Array(
+        new Node(0, Set.empty[Integer]),
+        new Node(9, Set(1, 2)),
+        new Node(2, Set(3)),
+        new Node(3, Set(4, 5)),
+        new Node(6, Set(7, 8))
+      )
+      assert(TreesInForest.countTrees(forest, 10) == 3)
+    }
     it("should find 2 trees") {
       val forest: Array[Node] = Array(
         new Node(0, Set(1, 2)),

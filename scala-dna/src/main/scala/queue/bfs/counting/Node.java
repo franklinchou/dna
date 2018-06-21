@@ -4,11 +4,13 @@ import scala.collection.immutable.Set;
 
 public class Node {
 
-    int root;
+    int data;
+
+    // refactor to Set<Node>
     private Set<Integer> adjacents;
 
     public Node(int e, Set<Integer> adjacents) {
-        this.root = e;
+        this.data = e;
         this.adjacents = adjacents;
     }
 

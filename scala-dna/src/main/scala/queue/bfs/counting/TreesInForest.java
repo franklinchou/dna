@@ -8,6 +8,8 @@ import java.util.Queue;
 
 
 /**
+ * Count number of trees in an arbitrary number of uni-directional graphs.
+ *
  * https://www.geeksforgeeks.org/count-number-trees-forest/
  */
 public class TreesInForest {
@@ -25,20 +27,20 @@ public class TreesInForest {
 
         boolean visited[] = new boolean[total];
 
-        for (int i = 0; i < total; i++) {
-            if (!visited[i]) {
+        for (Node n : nodes) {  // Looping through sequentially does not work. Why?
+            if (!visited[n.data]) {
 
-                visited[i] = true;
+                visited[n.data] = true;
 
                 Queue<Integer> q = new LinkedList<>();
-                q.add(i);
+                q.add(n.data);
 
                 while (!q.isEmpty()) {
                     int h = q.remove();
-                    for (Node n : nodes) {
+                    for (Node n2 : nodes) {
                         visited[h] = true;
-                        if (n.root == h) {
-                            enqueueAll(q, n.getAdjacents());
+                        if (n2.data == h) {
+                            enqueueAll(q, n2.getAdjacents());
                         }
                     }
                 }
