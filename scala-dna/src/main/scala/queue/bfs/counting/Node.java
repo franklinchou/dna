@@ -7,14 +7,18 @@ public class Node {
     int data;
 
     // refactor to Set<Node>
-    private Set<Integer> adjacents;
+    private Set<Node> adjacents;
 
-    public Node(int e, Set<Integer> adjacents) {
+    public Node(int e, Set<Node> adjacents) {
         this.data = e;
         this.adjacents = adjacents;
     }
 
-    Set<Integer> getAdjacents() {
+    public Node(int e) {
+        this.data = e;
+    }
+
+    Set<Node> getAdjacents() {
         return this.adjacents;
     }
 }

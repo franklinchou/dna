@@ -14,8 +14,8 @@ import java.util.Queue;
  */
 public class TreesInForest {
 
-    private static void enqueueAll(Queue<Integer> q, Set<Integer> adjacents) {
-        Iterator<Integer> it = adjacents.iterator();
+    private static void enqueueAll(Queue<Node> q, Set<Node> adjacents) {
+        Iterator<Node> it = adjacents.iterator();
         while (it.hasNext()) {
             q.add(it.next());
         }
@@ -27,19 +27,19 @@ public class TreesInForest {
 
         boolean visited[] = new boolean[total];
 
-        for (Node n : nodes) {  // Looping through sequentially does not work. Why?
-            if (!visited[n.data]) {
+        for (Node source : nodes) {
+            if (!visited[source.data]) {
 
-                visited[n.data] = true;
+                visited[source.data] = true;
 
-                Queue<Integer> q = new LinkedList<>();
-                q.add(n.data);
+                Queue<Node> q = new LinkedList<>();
+                q.add(source);
 
                 while (!q.isEmpty()) {
-                    int h = q.remove();
+                    Node h = q.remove();
                     for (Node n2 : nodes) {
-                        visited[h] = true;
-                        if (n2.data == h) {
+                        visited[h.data] = true;
+                        if (n2.data == h.data) {
                             enqueueAll(q, n2.getAdjacents());
                         }
                     }
