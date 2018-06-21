@@ -6,7 +6,6 @@ public class Node {
 
     int data;
 
-    // refactor to Set<Node>
     private Set<Node> adjacents;
 
     public Node(int e, Set<Node> adjacents) {
