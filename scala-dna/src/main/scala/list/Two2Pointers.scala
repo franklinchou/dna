@@ -6,13 +6,13 @@ import scala.annotation.tailrec
 
 
 /**
-  * Find the kth to last element using two pointers (iteratively).
+  * Find the kth to last element using two pointers.
   */
-object Two2Iterative extends App {
+object Two2Pointers extends App {
 
 
   // TODO Functional way to write this? As a fold?
-  private val testCase = Some(Node('a', Some(Node('b', Some(Node('c', Some(Node('d', Some(Node('e', None))))))))))
+  val testCase = Some(Node('a', Some(Node('b', Some(Node('c', Some(Node('d', Some(Node('e', None))))))))))
 
 
   type LinkedList[T] = Option[Node[T]]
