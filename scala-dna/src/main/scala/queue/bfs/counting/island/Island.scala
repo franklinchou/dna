@@ -1,4 +1,4 @@
-package queue.island
+package queue.bfs.counting.island
 
 import utils.Point
 

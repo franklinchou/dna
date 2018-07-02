@@ -1,6 +1,6 @@
-package queue.island
+package queue.bfs.counting.island
 
-import queue.island.Island.World
+import queue.bfs.counting.island.Island.World
 
 import scala.io.Source
 import scala.util.Random
