@@ -18,13 +18,11 @@ sundays = 0
 short_months = {9, 4, 6, 11}
 long_months = {1, 3, 5, 7, 8, 10, 12}
 
-
 if __name__ == "__main__":
     while year != 2000:
 
         leap = is_leap(year)
         end = 366 if leap else 365
-        iday = 0
 
         if month > 12:
             month = 1
@@ -36,15 +34,15 @@ if __name__ == "__main__":
         else:
             month_end = 29 if is_leap else 28
 
-        while iday != month_end:
-            if iday == 1 and day % 7 == 0:
-                sundays += 1
-            iday += 1
-            day += 1
-
-        month += 1
+        if day % 7 == 0:
+            sundays += 1
+            day = (day - 1) + month_end
+            month += 1
+        else:
+            day = (day - 1) + month_end
+            month += 1
 
         if month == 12:
             year += 1
 
-    print(sundays) # 171
+    print(sundays)  # 171
