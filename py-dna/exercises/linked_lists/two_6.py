@@ -14,7 +14,7 @@ def recurse(n: Node, visited=list()):
         return
 
     if visited.__contains__(n):
-        print("Found cycle")
+        print('Found cycle at {}'.format(n.record))
         return
 
     if n is not None:
