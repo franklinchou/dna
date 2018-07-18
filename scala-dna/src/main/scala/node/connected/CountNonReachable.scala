@@ -7,20 +7,27 @@ case class CountNonReachable(head: Int, size: Int, relationships: Map[Int, Seq[I
 
 object CountNonReachable {
 
-
   /**
     * Given an undirected graph and a set of vertices, count the number of non-reachable
     * nodes from the given head node using depth first search.
     *
-    * @param head
+    * @param root
     * @param size
     * @param relationships
     */
-  def countDFS(head: Int, size: Int, relationships: Map[Int, Seq[Int]]): Int = {
+  def countDFS(root: Int, size: Int, relationships: Map[Int, Seq[Int]]): Int = {
     0
   }
 
 
+  /**
+    * With BFS
+    *
+    * @param root
+    * @param size
+    * @param relationships
+    * @return
+    */
   def countBFS(root: Int, size: Int, relationships: Map[Int, Seq[Int]]): Int = {
 
     val visited = Array.fill(size)(false)
