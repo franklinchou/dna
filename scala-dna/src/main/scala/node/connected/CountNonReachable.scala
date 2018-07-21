@@ -16,7 +16,26 @@ object CountNonReachable {
     * @param relationships
     */
   def countDFS(root: Int, size: Int, relationships: Map[Int, Seq[Int]]): Int = {
-    0
+
+    val visited = Array.fill(size)(false)
+
+    val adjacents = relationships(root)
+
+    visited(root) = true
+
+    for (v <- adjacents) {
+      if (!visited(v)) {
+        visited(v) = true
+
+        // Remove a visited node from the adjacents map and update relationships
+        val adj = relationships(root).filterNot(_ == v)
+        val updated = relationships + (root -> adj)
+
+        countDFS(root, size, updated)
+      }
+    }
+
+    visited.count(_ == false)
   }
 
 

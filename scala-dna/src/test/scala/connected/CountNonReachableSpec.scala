@@ -32,7 +32,12 @@ class CountNonReachableSpec extends FunSpec {
 
 
   describe("Count non-reachable nodes with dfs") {
-
+    tests.foreach { t =>
+      val source = t._1
+      it(s"test $source") {
+        assert(count(source, "dfs") == t._2)
+      }
+    }
   }
 
 }
