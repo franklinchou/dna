@@ -1,6 +1,6 @@
 package node.graphs.island
 
-import node.graphs.island.Island.World
+import node.Node.World
 
 import scala.io.Source
 import scala.util.Random
