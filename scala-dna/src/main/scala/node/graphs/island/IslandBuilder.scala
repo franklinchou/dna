@@ -1,6 +1,6 @@
-package queue.island
+package node.graphs.island
 
-import queue.island.Island.World
+import node.graphs.island.Island.World
 
 import scala.io.Source
 import scala.util.Random

@@ -1,12 +1,12 @@
-package queue.island
+package node.graphs.island
 
+import node.Node.World
 import utils.Point
 
 import scala.collection.mutable.Queue
 
 object Island {
 
-  type World = Array[Array[Int]]
 
   private def visit(isVisited: World, p: Point): Unit = {
     isVisited(p.x)(p.y) = 1
