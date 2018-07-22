@@ -1,6 +1,5 @@
 function generate_table() {
 
-
     // Renders the table from Island, size 25.
     let tableToRender = [
         [0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1],
@@ -49,8 +48,10 @@ function generate_table() {
         for (var j = 0; j < tableToRenderYSize; j++) {
             var cell = document.createElement("td");
 
-            var cellValue = document.createTextNode("");
+            var cellId = `${i}-${j}`
 
+            cell.id = cellId;
+            
             // Color scheme generated with: https://coolors.co
             if (tableToRender[i][j] === 1) {
                 cell.setAttribute("bgcolor", "A3C9A8");
@@ -59,7 +60,9 @@ function generate_table() {
             }
 
             cell.setAttribute("style", "padding:8px");
-
+            
+            var cellValue = document.createTextNode("");
+            
             cell.appendChild(cellValue);
             row.appendChild(cell);
         }
@@ -70,4 +73,19 @@ function generate_table() {
 
     tbl.appendChild(tblBody);
     body.appendChild(tbl);
+
+    document.querySelector('table').addEventListener('click', function(event) {
+        if (event.target.getElementsByTagName("td")) {
+            var targetCellId = event.target.id;
+            var targetCell = document.getElementById(targetCellId);
+        
+            if (targetCell.getAttribute("bgcolor") === "A3C9A8") {
+                targetCell.setAttribute("bgcolor", "BB7E8C");
+            } else if (targetCell.getAttribute("bgcolor") === "BB7E8C") {
+                targetCell.setAttribute("bgcolor", "A3C9A8");
+            } else {
+                // If water, do nothing
+            }
+        }
+    });
 }
