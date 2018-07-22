@@ -7,16 +7,12 @@ import utils.File
 class MaxConnectedSpec extends FunSpec {
 
 
-  private def load(fname: String): Int = {
-    val q= File
+  private def load(fname: String): World =
+    File
       .read(fname)
-      .map(line => line.split(","))
+      .map(line => line.split(",").map(_.toInt))
+      .toArray
 
-    q
-
-    0
-
-  }
 
 
   describe("") {

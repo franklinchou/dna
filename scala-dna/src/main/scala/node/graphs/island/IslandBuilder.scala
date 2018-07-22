@@ -23,6 +23,8 @@ object IslandBuilder extends App {
 
   val path = Source.fromResource(s"/island/${args(1)}.csv")
 
+
+  // TODO: Cleaner with for-comprehension?
   val construct: Array[String] =
     world
       .map { row =>
