@@ -40,7 +40,7 @@ object MaxConnected {
       val source = Point(x, y)
       val sourceColor = world(x)(y)
 
-      val size = 0
+      var size = 0
 
       /**
         * Note: Immutable queue returns the dequeued element and the new queue with
@@ -59,21 +59,20 @@ object MaxConnected {
         val childColor = color(child)
 
         if (childColor == sourceColor) {
-          largest += 1
+          size += 1
         }
 
         /**
           * Add moves only if they contain a same color element
           */
-        for (m <- moves(source)) {
+        for (m <- moves(child)) {
           if (!visited.contains(m) && isMoveable(m) && color(m) == sourceColor) {
             q.enqueue(m)
           }
         }
       }
 
-      Math.max(size, largest)
-
+      largest = Math.max(size, largest)
     }
 
     largest
