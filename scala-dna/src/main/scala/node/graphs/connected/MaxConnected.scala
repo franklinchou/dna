@@ -55,9 +55,7 @@ object MaxConnected {
 
         val child = q.dequeue
 
-        if (visited.contains(child)) {
-          // This node has already been visited, do nothing
-        } else {
+        if (!visited.contains(child)) {
           visited.add(child)
           size += 1
 
