@@ -15,8 +15,8 @@ class MaxConnectedSpec extends FunSpec {
       .toArray
 
 
-  describe("") {
-    it("") {
+  describe("Given a test file") {
+    it("should find the maximum connected component") {
       val world = load("connected/max-connected-1.txt")
       val result = MaxConnected.apply(world)
       assert(result == 9)

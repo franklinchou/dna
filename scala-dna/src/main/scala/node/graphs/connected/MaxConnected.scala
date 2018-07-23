@@ -50,28 +50,27 @@ object MaxConnected {
       val visited = new mutable.HashSet[Point]()
 
       q.enqueue(source)
-      visited.add(source)
 
       while (q.nonEmpty) {
 
         val child = q.dequeue
-        visited.add(child)
-        val childColor = color(child)
 
-        if (childColor == sourceColor) {
+        if (visited.contains(child)) {
+          // This node has already been visited, do nothing
+        } else {
+          visited.add(child)
           size += 1
-        }
 
-        /**
-          * Add moves only if they contain a same color element
-          */
-        for (m <- moves(child)) {
-          if (!visited.contains(m) && isMoveable(m) && color(m) == sourceColor) {
-            q.enqueue(m)
+          /**
+            * Add moves only if they contain a same color element
+            */
+          for (m <- moves(child)) {
+            if (!visited.contains(m) && isMoveable(m) && color(m) == sourceColor) {
+              q.enqueue(m)
+            }
           }
         }
       }
-
       largest = Math.max(size, largest)
     }
 
