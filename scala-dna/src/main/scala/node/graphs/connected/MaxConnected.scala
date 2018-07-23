@@ -6,13 +6,6 @@ import utils.Point
 import scala.collection.mutable
 
 
-/**
-  * Immutable queue returns the dequeued element and the new queue with that
-  * element removed.
-  */
-
-import scala.collection.mutable.Queue
-
 object MaxConnected {
 
   private def moves(p: Point): Seq[Point] = {
@@ -37,6 +30,9 @@ object MaxConnected {
       (p.x >= 0 && p.y >= 0) && (p.x < worldHSize && p.y < worldVSize)
     }
 
+    // Find the color of a point
+    val color = (p: Point) => world(p.x)(p.y)
+
     for {
       x <- 0 until worldHSize
       y <- 0 until worldVSize
@@ -46,26 +42,35 @@ object MaxConnected {
 
       val size = 0
 
-      val q = Queue[Point]()
+      /**
+        * Note: Immutable queue returns the dequeued element and the new queue with
+        * that element removed.
+        */
+      val q = mutable.Queue[Point]()
       val visited = new mutable.HashSet[Point]()
 
       q.enqueue(source)
+      visited.add(source)
 
       while (q.nonEmpty) {
 
-        val p = q.dequeue
+        val child = q.dequeue
+        visited.add(child)
+        val childColor = color(child)
 
+        if (childColor == sourceColor) {
+          largest += 1
+        }
 
         /**
           * Add moves only if they contain a same color element
           */
         for (m <- moves(source)) {
-          if (isMoveable(m) && world(m.x)(m.y) == sourceColor) {
+          if (!visited.contains(m) && isMoveable(m) && color(m) == sourceColor) {
             q.enqueue(m)
           }
         }
       }
-
 
       Math.max(size, largest)
 
