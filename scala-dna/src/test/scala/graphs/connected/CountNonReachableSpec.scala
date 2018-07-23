@@ -1,4 +1,4 @@
-package connected
+package graphs.connected
 
 import node.connected.{CountNonReachable, Relationships}
 import org.scalatest.FunSpec

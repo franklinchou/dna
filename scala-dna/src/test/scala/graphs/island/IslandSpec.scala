@@ -1,8 +1,8 @@
-package queue
+package graphs.island
 
+import node.Node.World
+import node.graphs.island.Island
 import org.scalatest.FunSpec
-import queue.island.Island
-import queue.island.Island.World
 import utils.File
 
 class IslandSpec extends FunSpec {
