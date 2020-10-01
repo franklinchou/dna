@@ -7,6 +7,8 @@ class TestPriorityQueue(unittest.TestCase):
 
     def test_stack(self):
         s = Stack()
+        self.assertEqual(s.is_empty(), True)
+
         all_items = [ \
             (1, 'linda'), \
             (2, 'bob'), \
@@ -17,8 +19,7 @@ class TestPriorityQueue(unittest.TestCase):
 
         for k, v in all_items:
             s.push(k, v)
-
-        self.assertEqual(s.is_empty(), False)
+            self.assertEqual(s.is_empty(), False)
 
         i = len(all_items) - 1
         while not s.is_empty():
