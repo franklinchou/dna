@@ -1,4 +1,5 @@
-from typing import Dict, Tuple, Optional
+from __future__ import annotations
+from typing import Dict, Optional, Tuple, Type
 
 class Node(object):
 
@@ -16,8 +17,8 @@ class Stack(object):
         self.size = 0
         self.head = None
 
-    def is_empty(self) -> int:
-        return self.size
+    def is_empty(self) -> bool:
+        return self.size == 0
 
     def push(self, priority: int, record: str):
         n = Node(priority, record)
