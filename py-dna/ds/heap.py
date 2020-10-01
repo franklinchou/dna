@@ -37,6 +37,7 @@ class Stack(object):
         n = self.head.next
         self.head = n
         self.size -= 1
+        return r
 
 class Heap(object):
 

@@ -21,7 +21,7 @@ class TestPriorityQueue(unittest.TestCase):
         self.assertEqual(s.is_empty(), False)
 
         i = len(all_items) - 1
-        while not self.is_empty():
+        while not s.is_empty():
             p = s.pull()
             self.assertEqual(all_items[i][0], p[0])
             self.assertEqual(all_items[i][1], p[1])
