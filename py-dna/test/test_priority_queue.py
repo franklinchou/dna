@@ -1,9 +1,24 @@
 import unittest
+import random
 
 from ds.priority_queue import PriorityQueue
 from ds.heap import Stack
 
 class TestPriorityQueue(unittest.TestCase):
+
+    def test_prirority_queue(self):
+        test_set = [random.randint(0, 50) for i in range(100)]
+        test_set = {k : '' for k in test_set}
+        pq = PriorityQueue(test_set)
+
+        # ensure items pulled from the priority queue are monotonically
+        # decreasing
+        last = 0
+        while not pq.is_empty():
+            i = pq.pull()
+            print(i)
+            self.assertTrue(i >= last, 'Encountered priority out of order')
+            i = last
 
     def test_stack(self):
         s = Stack()
@@ -28,11 +43,4 @@ class TestPriorityQueue(unittest.TestCase):
             self.assertEqual(all_items[i][1], p[1])
             i -= 1
         self.assertEqual(s.is_empty(), True)
-
-    def test_prirority_queue(self):
-        input = dict()
-        for i in range(100):
-            input[i] = ''
-        pq = PriorityQueue(input)
-        self.assertEqual(pq, PriorityQueue({}))
 

@@ -42,8 +42,8 @@ class Stack(object):
 class Heap(object):
 
     def __init__(self, d: Dict[int, str]):
-        self.size = 0
         self._list = [(k, v) for k, v in d.items()]
+        self.size = len(self._list)
         self._heapify()
 
     def size(self) -> int:
@@ -55,16 +55,20 @@ class Heap(object):
     def peek(self):
         return self._list[0]
 
-    def pull(self):
+    def pull(self) -> Optional[Tuple[int, str]]:
+        if self.size == 0:
+            return None
         result = self._list[0]
-        del self._list[0]
+        self._list = self._list[1:]
         self._heapify()
+        self.size -= 1
+        print(result)
         return result
 
     def insert(self, priority: int, record: str):
         self._list.append((priority, record))
         self._heapify()
-        pass
+        self.size += 1
 
     def _heapify(self):
         half = int(len(self._list) / 2)
@@ -72,20 +76,22 @@ class Heap(object):
             left_index = 2 * head_index + 1
             right_index = 2 * head_index + 2
 
-            head = self._list[head_index]
-            left = self._list[left_index]
-            right = self._list[right_index]
-
-            head_priority = head[0]
-            left_priority = left[0]
-            right_priority = right[0]
-
             left_index_in_bound = left_index <= len(self._list) - 1
-            right_index_in_bound = right_index <= len(self._list) -1
+            right_index_in_bound = right_index <= len(self._list) - 1
 
-            if left_index_in_bound and left_priority >= head_priority:
-                self._list[left_index] = head
-                self._list[head_index] = left
-            if right_index_in_bound and right_priority >= head_priority:
-                self._list[right_index] = head
-                self._list[head_index] = right
+            head = self._list[head_index]
+            head_priority = head[0]
+
+            if left_index_in_bound:
+                left = self._list[left_index]
+                left_priority = left[0]
+                if left_priority >= head_priority:
+                    self._list[left_index] = head
+                    self._list[head_index] = left
+
+            if right_index_in_bound:
+                right = self._list[right_index]
+                right_priority = right[0]
+                if right_priority >= head_priority:
+                    self._list[right_index] = head
+                    self._list[head_index] = right
