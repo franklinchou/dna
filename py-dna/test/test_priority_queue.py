@@ -11,6 +11,8 @@ class TestPriorityQueue(unittest.TestCase):
         test_set = {k : '' for k in test_set}
         pq = PriorityQueue(test_set)
 
+        print(pq.pull())
+
         # ensure items pulled from the priority queue are monotonically
         # decreasing
         last = 0

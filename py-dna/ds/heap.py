@@ -62,7 +62,6 @@ class Heap(object):
         self._list = self._list[1:]
         self._heapify()
         self.size -= 1
-        print(result)
         return result
 
     def insert(self, priority: int, record: str):
