@@ -43,9 +43,7 @@ class Heap(object):
 
     def __init__(self, d: Dict[int, str]):
         self.size = 0
-        self.stack = Stack()
-        for k in d:
-            stack.push(k, d[k])
+        self._list = [(k, v) for k, v in d.items()]
         self._heapify()
 
     def size(self) -> int:
@@ -55,18 +53,39 @@ class Heap(object):
         return self.size == 0
 
     def peek(self):
-        pass
+        return self._list[0]
 
     def pull(self):
-        pass
+        result = self._list[0]
+        del self._list[0]
+        self._heapify()
+        return result
 
     def insert(self, priority: int, record: str):
-        self.stack.push(priority, record)
+        self._list.append((priority, record))
         self._heapify()
         pass
 
     def _heapify(self):
-        # while !stack.is_empty:
-        if self.stack.is_empty:
-            return
-        pass
+        half = int(len(self._list) / 2)
+        for head_index in range(half):
+            left_index = 2 * head_index + 1
+            right_index = 2 * head_index + 2
+
+            head = self._list[head_index]
+            left = self._list[left_index]
+            right = self._list[right_index]
+
+            head_priority = head[0]
+            left_priority = left[0]
+            right_priority = right[0]
+
+            left_index_in_bound = left_index <= len(self._list) - 1
+            right_index_in_bound = right_index <= len(self._list) -1
+
+            if left_index_in_bound and left_priority >= head_priority:
+                self._list[left_index] = head
+                self._list[head_index] = left
+            if right_index_in_bound and right_priority >= head_priority:
+                self._list[right_index] = head
+                self._list[head_index] = right
