@@ -1,9 +1,12 @@
 import unittest
 
 from ds.priority_queue import PriorityQueue
+from ds.heap import Stack
 
 class TestPriorityQueue(unittest.TestCase):
 
+    def test_stack(self):
+        
 
     def test_prirority_queue(self):
         input = dict()

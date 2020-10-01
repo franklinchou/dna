@@ -1,24 +1,41 @@
 from typing import Dict, Tuple, Optional
 
 class Node(object):
+
     def __init__(self, priority: int, record: str):
         self.priority = priority
         self.record = record
+        self.next = None
+
+    def set_next(self, n: Node):
+        self.next = n
 
 class Stack(object):
+
     def __init__(self):
         self.size = 0
+        self.head = None
 
     def is_empty(self) -> int:
         return self.size
 
     def push(self, priority: int, record: str):
-        pass
+        n = Node(priority, record)
+        if self.head is None:
+            self.head = n
+        else:
+            ptr = self.head
+            self.head = n
+            self.head.next = ptr
+        self.size += 1
 
     def pull(self) -> Optional[Tuple[int, str]]:
         if self.size == 0:
             return None
-        pass
+        r = (self.head.priority, self.head.record)
+        n = self.head.next
+        self.head = n
+        self.size -= 1
 
 class Heap(object):
 
