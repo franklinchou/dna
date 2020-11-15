@@ -10,13 +10,13 @@ def list2occurrences(l: List[String]): Map[Char, Int] =
   l.flatMap(_.toList).groupBy(identity).view.mapValues(_.size).toMap
   
 def deduce(m: Map[Char, Int]): MMap[Char, Int] = {
-  val totalInputSize = m.values.sum * m.size
+  val commonMultiple = m.values.product
   var result: MMap[Char, Int] = MMap()
   var i = 2
   for ((k, v) <- m) {
     breakable {
       while (i < 9999) {
-        if (totalInputSize % i == 0) {
+        if (commonMultiple % i == 0) {
           result = result + (k -> i) // this is deprecated
           break()
         }
