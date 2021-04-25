@@ -33,7 +33,9 @@ jobs:
             - "scala-dna/.m2"
       - run:
           name: list
-          command: ls
+          command: |
+            cd scala-dna
+            ls
 workflows:
   version: 2
   test_all:
