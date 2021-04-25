@@ -7,18 +7,27 @@ jobs:
       - checkout
       - run:
           name: run-python-tests
-          command: cd py-dna && python3 -m unittest discover 
+          command: cd py-dna && python3 -m unittest discover
   scala-dna-test:
     docker:
       - image: hseeberger/scala-sbt:8u141-jdk_2.12.3_0.13.16
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - proj-{{ checksum "build.sbt" }}
+            - proj-
       - run:
           name: run-scala-tests
           command: |
             cd scala-dna
-            sbt clean compile
+            sbt compile
             sbt test
+      - save_cache:
+          key: proj-{{ checksum "build.sbt" }}
+          paths:
+            - target
+            - project/target
 workflows:
   version: 2
   test_all:
