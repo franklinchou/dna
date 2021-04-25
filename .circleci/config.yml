@@ -21,8 +21,8 @@ jobs:
           name: run-scala-tests
           command: |
             cd scala-dna
-            # sbt compile
-            # sbt test
+            sbt compile
+            sbt test
       - save_cache:
           key: proj2-{{ checksum "scala-dna/build.sbt" }}
           paths:
