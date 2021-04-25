@@ -35,7 +35,7 @@ jobs:
           name: list
           command: |
             cd scala-dna
-            ls
+            ls -al
 workflows:
   version: 2
   test_all:
