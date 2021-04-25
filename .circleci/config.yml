@@ -15,8 +15,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - proj-{{ checksum "scala-dna/build.sbt" }}
-            - proj-
+            - proj2-{{ checksum "scala-dna/build.sbt" }}
+            - proj2-
       - run:
           name: run-scala-tests
           command: |
@@ -24,7 +24,7 @@ jobs:
             sbt compile
             sbt test
       - save_cache:
-          key: proj-{{ checksum "scala-dna/build.sbt" }}
+          key: proj2-{{ checksum "scala-dna/build.sbt" }}
           paths:
             - "scala-dna/target"
             - "scala-dna/project/target"
