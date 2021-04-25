@@ -28,6 +28,9 @@ jobs:
           paths:
             - "scala-dna/target"
             - "scala-dna/project/target"
+            - "scala-dna/.ivy2/cache"
+            - "scala-dna/.sbt"
+            - "scala-dna/.m2"
 workflows:
   version: 2
   test_all:
