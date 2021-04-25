@@ -31,10 +31,9 @@ jobs:
             - "scala-dna/.ivy2/cache"
             - "scala-dna/.sbt"
             - "scala-dna/.m2"
-        - run:
-            name: list
-            command: |
-              ls
+      - run:
+          name: list
+          command: ls
 workflows:
   version: 2
   test_all:
