@@ -26,8 +26,8 @@ jobs:
       - save_cache:
           key: proj-{{ checksum "scala-dna/build.sbt" }}
           paths:
-            - scala-dna/target
-            - scala-dna/project/target
+            - "scala-dna/target"
+            - "scala-dna/project/target"
 workflows:
   version: 2
   test_all:
