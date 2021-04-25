@@ -11,7 +11,6 @@ jobs:
   scala-dna-test:
     docker:
       - image: hseeberger/scala-sbt:8u141-jdk_2.12.3_0.13.16
-    working_directory: scala-dna
     steps:
       - checkout
       - restore_cache:
